@@ -13,3 +13,6 @@ wget http://www.trieuvan.com/apache/tomcat/tomcat-9/v9.0.8/bin/apache-tomcat-9.0
 
 tar -xzvf apache-tomcat-9.0.8.tar.gz
 mv apache-tomcat-9.0.8/ tomcat/
+rm ./apache-tomcat-9.0.8.tar.gz
+
+sudo apt-get install ssh -y
