@@ -1,0 +1,5 @@
+
+JENKINS_INSTALL_LOCATION='~/jenkins'
+JENKINS_PORT=8081
+
+java -jar $JENKINS_INSTALL_LOCATION/jenkins.war --httpPort=$JENKINS_PORT
