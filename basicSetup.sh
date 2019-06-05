@@ -36,6 +36,6 @@ cp ./jenkins.war $JENKINS_INSTALL_LOCATION
 #sudo apt install duplicity -y
 
 # Dupliciti
-wget https://updates.duplicati.com/beta/duplicati_2.0.4.5-1_all.deb --no-check-certificate
+wget http://updates.duplicati.com/beta/duplicati_2.0.4.5-1_all.deb
 
 sudo apt install ./duplicati_2.0.4.5-1_all.deb
