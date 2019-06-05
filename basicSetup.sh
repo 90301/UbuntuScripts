@@ -2,7 +2,7 @@
 # your code goes here
 
 TOMCAT_VERSION="9.0.20"
-JENKINS_INSTALL_LOCATION='~/jenkins'
+JENKINS_INSTALL_LOCATION="~/jenkins"
 
 sudo apt install openjdk-8-jdk -y
 
@@ -28,3 +28,8 @@ mkdir $JENKINS_INSTALL_LOCATION
 wget --directory-prefix=$JENKINS_INSTALL_LOCATION http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 
 # sed -i 's/8080/8081/g' /etc/default/jenkins
+
+# Duplicity
+apt-get install ncftp python-paramiko python-pycryptopp lftp python-boto python-dev librsync-dev
+
+apt install duplicity
