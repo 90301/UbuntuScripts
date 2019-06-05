@@ -30,6 +30,6 @@ wget --directory-prefix=$JENKINS_INSTALL_LOCATION http://mirrors.jenkins.io/war-
 # sed -i 's/8080/8081/g' /etc/default/jenkins
 
 # Duplicity
-sudo apt-get install ncftp python-paramiko python-pycryptopp lftp python-boto python-dev librsync-dev
+sudo apt install ncftp python-paramiko python-pycryptopp lftp python-boto python-dev librsync-dev -y
 
 sudo apt install duplicity -y
