@@ -31,6 +31,11 @@ cp ./jenkins.war $JENKINS_INSTALL_LOCATION
 # sed -i 's/8080/8081/g' /etc/default/jenkins
 
 # Duplicity
-sudo apt install ncftp python-paramiko python-pycryptopp lftp python-boto python-dev librsync-dev -y
+#sudo apt install ncftp python-paramiko python-pycryptopp lftp python-boto python-dev librsync-dev -y
 
-sudo apt install duplicity -y
+#sudo apt install duplicity -y
+
+# Dupliciti
+wget https://updates.duplicati.com/beta/duplicati_2.0.4.5-1_all.deb
+
+sudo apt install ./duplicati_2.0.4.5-1_all.deb
