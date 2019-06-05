@@ -2,7 +2,7 @@
 # your code goes here
 
 TOMCAT_VERSION="9.0.20"
-JENKINS_INSTALL_LOCATION="~/jenkins"
+JENKINS_INSTALL_LOCATION="../jenkins"
 
 sudo apt install openjdk-8-jdk -y
 
@@ -25,8 +25,9 @@ sudo apt-get install ssh -y
 
 # Jenkins WAR file
 mkdir $JENKINS_INSTALL_LOCATION
-wget --directory-prefix=$JENKINS_INSTALL_LOCATION http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 
+cp ./jenkins.war $JENKINS_INSTALL_LOCATION
 # sed -i 's/8080/8081/g' /etc/default/jenkins
 
 # Duplicity
