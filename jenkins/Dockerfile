@@ -1,2 +1,4 @@
 FROM jenkins/jenkins:lts
-RUN apt install maven
+USER root
+RUN apt-get install -y maven
+USER jenkins
