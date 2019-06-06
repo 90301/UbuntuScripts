@@ -1,0 +1,7 @@
+Vagrant.configure("2") do |config|
+    config.vm.provider "docker" do |d|
+        d.image = "jenkins/jenkins:lts"
+        d.name = "styleconnect-jenkins"
+    end
+    config.vm.network "forwarded_port", guest: 8080, host: 8081
+end
