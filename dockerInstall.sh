@@ -23,3 +23,6 @@ apt install vagrant -y
 
 cd jenkins
 vagrant up
+
+cd ../tomcat
+vagrant up
