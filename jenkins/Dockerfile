@@ -8,4 +8,5 @@ RUN mkdir -p ${JARS_FOLDER} \
   && useradd -d ${JARS_FOLDER} -u ${uid} -g ${gid} -m -s /bin/bash ${user}
 RUN apt-get update
 RUN apt-get install -y maven
+RUN echo "${USER} ${group} ${gid} ${uid}"
 USER jenkins
