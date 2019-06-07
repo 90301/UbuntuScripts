@@ -1,5 +1,9 @@
 FROM jenkins/jenkins:lts
 ARG JARS_FOLDER="/jars"
+ARG user=jenkins
+ARG group=jenkins
+ARG uid=1000
+ARG gid=1000
 USER root
 VOLUME [ JARS_FOLDER ]
 RUN echo "${USER} ${group} ${gid} ${uid}"
