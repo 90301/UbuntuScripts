@@ -1,4 +1,5 @@
 cd ./jenkins
-docker run  -d -p 8081:8080 -v jenkins_home:/jenkins_home --name styleconnect-jenkins ./DockerFile
+docker build . -t styleconnect-jenkins -f ./DockerFile
+docker run  -d -p 8081:8080 -v jenkins_home:/jenkins_home --name styleconnect-jenkins styleconnect-jenkins
 cd ../
 # -P [HOST]:[CONTAINER]
