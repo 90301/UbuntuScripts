@@ -1,1 +1,1 @@
-git reset --hard;git pull;chmod +rwx *
+git reset --hard;git pull;chmod +rwx -R *
