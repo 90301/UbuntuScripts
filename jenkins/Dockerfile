@@ -1,10 +1,11 @@
 FROM jenkins/jenkins:lts
+ARG JARS_FOLDER="/jars"
 USER root
-VOLUME [ "/jars" ]
-RUN mkdir -p $JENKINS_HOME \
-  && chown ${uid}:${gid} $JENKINS_HOME \
+VOLUME [ JARS_FOLDER ]
+RUN mkdir -p ${JARS_FOLDER} \
+  && chown ${uid}:${gid} ${JARS_FOLDER} \
   && groupadd -g ${gid} ${group} \
-  && useradd -d "$JENKINS_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
+  && useradd -d ${JARS_FOLDER} -u ${uid} -g ${gid} -m -s /bin/bash ${user}
 RUN apt-get update
 RUN apt-get install -y maven
 USER jenkins
