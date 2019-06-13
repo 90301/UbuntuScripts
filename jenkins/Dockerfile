@@ -9,6 +9,7 @@ VOLUME $JARS_FOLDER
 RUN echo "${USER} ${group} ${gid} ${uid}"
 RUN mkdir -p ${JARS_FOLDER} \
   && chown ${uid}:${gid} ${JARS_FOLDER}
+RUN chmod a+rwx -R ${JARS_FOLDER}
 RUN apt-get update
 RUN apt-get install -y maven
 
