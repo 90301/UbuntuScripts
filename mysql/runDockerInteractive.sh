@@ -1,4 +1,4 @@
-#!/bin/bash/
+
 echo "Set the mysql root password"
 read msqlpass
 
