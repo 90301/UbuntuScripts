@@ -17,12 +17,10 @@ apt update
 
 apt install docker-ce docker-ce-cli containerd.io -y
 
-# Install Vagrant
+./jenkins/buildAndRunDocker.sh
 
-apt install vagrant -y
+./tomcat/buildAndRunDocker.sh
 
-cd jenkins
-vagrant up
+./mysql/buildAndRunDocker.sh
 
-cd ../tomcat
-vagrant up
+./mysql/dockerBash.sh
