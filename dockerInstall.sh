@@ -1,10 +1,6 @@
 #!/bin/sh
 cd "$(dirname "$0")"
 
-cd jenkins
-vagrant destroy --force
-cd ..
-
 # Docker Version
 
 apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
