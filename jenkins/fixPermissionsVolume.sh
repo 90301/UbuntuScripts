@@ -1,0 +1,1 @@
+chmod a+rwx -R /var/lib/docker/volumes/jars/
