@@ -1,6 +1,6 @@
 FROM duplicati/duplicati
 ARG BACKUPS_FOLDER="/backups"
-ARG JENKINS_HOME ="/jenkins"
+ARG JENKINS_HOME="/jenkins"
 USER root
 VOLUME $BACKUPS_FOLDER
 VOLUME $JENKINS_HOME
