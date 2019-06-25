@@ -1,3 +1,7 @@
-FROM tomcat:9.0.20-jdk8
+FROM duplicati/duplicati
+ARG BACKUPS_FOLDER="/backups"
+ARG JENKINS_HOME ="/jenkins"
 USER root
+VOLUME $BACKUPS_FOLDER
+VOLUME $JENKINS_HOME
 RUN cd ~/;pwd

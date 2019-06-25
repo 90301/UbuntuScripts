@@ -1,9 +1,0 @@
-Vagrant.configure("2") do |config|
-    config.vm.provider "docker" do |d|
-        d.build_dir = "."
-        d.name = "styleconnect-jenkins"
-    end
-    config.vm.network "forwarded_port", guest: 8080, host: 8081
-    config.vm.synced_folder "/jars", "/jars", mount_options: ["uid=1000"], create: true
-    config.vm.synced_folder "/jenkins_home", "/var/jenkins_home", mount_options: ["uid=1000","dmode=777"], create: true, disabled: true
-end
