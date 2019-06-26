@@ -1,6 +1,10 @@
 cd ./dupliciti
 
-docker build . -t styleconnect-dupliciti -f ./Dockerfile
+./vars.sh
+
+docker build . -t $CONTAINER_NAME -f ./Dockerfile
+
 ./runDocker.sh
+
 cd ../
 # -P [HOST]:[CONTAINER]

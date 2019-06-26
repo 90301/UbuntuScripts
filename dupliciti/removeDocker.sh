@@ -1,2 +1,5 @@
-docker stop styleconnect-dupliciti
-docker rm styleconnect-dupliciti
+
+./vars.sh
+
+docker stop $CONTAINER_NAME
+docker rm $CONTAINER_NAME
