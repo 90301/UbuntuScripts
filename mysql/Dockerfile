@@ -14,4 +14,9 @@ RUN chmod 0644 /etc/cron.d/backup-cron
 
 # Apply cron job
 RUN crontab /etc/cron.d/backup-cron
+
+#Modify entrypoint script
+
+COPY styleconnect-entrypoint.sh /usr/local/bin/
+ENTRYPOINT [ "styleconnect-entrypoint.sh" ]
 CMD cron -f && mysqld
