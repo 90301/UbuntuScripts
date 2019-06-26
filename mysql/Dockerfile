@@ -19,4 +19,4 @@ RUN crontab /etc/cron.d/backup-cron
 
 COPY styleconnect-entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "styleconnect-entrypoint.sh" ]
-CMD ["mysqld"]
+#CMD ["mysqld"]

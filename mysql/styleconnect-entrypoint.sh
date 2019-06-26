@@ -1,4 +1,4 @@
-
-cron -f
+#!/bin/bash
+cron
 
 /usr/local/bin/docker-entrypoint.sh $@
