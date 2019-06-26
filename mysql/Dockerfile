@@ -14,4 +14,4 @@ RUN chmod 0644 /etc/cron.d/backup-cron
 
 # Apply cron job
 RUN crontab /etc/cron.d/backup-cron
-CMD ["cron", "-f"]
+CMD cron -f && mysqld
