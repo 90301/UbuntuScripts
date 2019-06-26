@@ -1,4 +1,4 @@
-cd ./dupliciti
+cd ./duplicati
 
 source  ./vars.sh
 

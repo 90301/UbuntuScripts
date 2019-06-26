@@ -11,5 +11,7 @@ VOLUME $BACKUPS_FOLDER
 VOLUME $JENKINS_HOME
 VOLUME $MYSQL_FOLDER
 RUN cd ~/;pwd
+
+RUN echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-${MYSQL_MAJOR}" > /etc/apt/sources.list.d/mysql.list
 RUN apt-get update
 RUN apt-get install -y mysql-community-client="${MYSQL_VERSION}"
