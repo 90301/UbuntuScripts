@@ -1,6 +1,6 @@
 cd ./dupliciti
 
-./vars.sh
+source  ./vars.sh
 
 docker build . -t $CONTAINER_NAME -f ./Dockerfile
 

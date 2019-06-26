@@ -1,2 +1,2 @@
 
-$CONTAINER_NAME="styleconnect-duplicati"
+CONTAINER_NAME="styleconnect-duplicati"
