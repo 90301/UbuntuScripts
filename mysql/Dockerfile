@@ -5,18 +5,18 @@ RUN cd ~/;pwd
 VOLUME $BACKUPS_FOLDER
 
 # Install cron
-RUN apt-get update
-RUN apt-get -y install -qq --force-yes cron
+#RUN apt-get update
+#RUN apt-get -y install -qq --force-yes cron
 
-COPY backup-cron /etc/cron.d/backup-cron
+#COPY backup-cron /etc/cron.d/backup-cron
 # Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/backup-cron
+#RUN chmod 0644 /etc/cron.d/backup-cron
 
 # Apply cron job
-RUN crontab /etc/cron.d/backup-cron
+#RUN crontab /etc/cron.d/backup-cron
 
 #Modify entrypoint script
 
-COPY styleconnect-entrypoint.sh /usr/local/bin/
-ENTRYPOINT [ "styleconnect-entrypoint.sh" ]
+#COPY styleconnect-entrypoint.sh /usr/local/bin/
+#ENTRYPOINT [ "styleconnect-entrypoint.sh" ]
 #CMD ["mysqld"]
