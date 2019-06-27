@@ -33,6 +33,13 @@ RUN set -ex; \
 	rm -rf "$GNUPGHOME"; \
 	apt-key list > /dev/null
 
-RUN echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-${MYSQL_MAJOR}" > /etc/apt/sources.list.d/mysql.list
+#RUN echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-${MYSQL_MAJOR}" > /etc/apt/sources.list.d/mysql.list
+
+
 RUN apt-get update
+RUN apt-get install wget
+
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+RUN dpkg -i mysql-apt-config_0.8.10-1_all.deb
+
 RUN apt-get install -y mysql-community-client="${MYSQL_VERSION}"
