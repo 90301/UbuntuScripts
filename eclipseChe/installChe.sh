@@ -22,4 +22,4 @@ chectl --version
 
 minikube start --memory=4096
 
-chectl server:start --multiuser
+chectl server:start --multiuser --platform=minikube
