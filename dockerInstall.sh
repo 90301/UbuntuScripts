@@ -13,10 +13,10 @@ apt update
 
 apt install docker-ce docker-ce-cli containerd.io -y
 
-./jenkins/buildAndRunDocker.sh
+#./jenkins/buildAndRunDocker.sh
 
-./tomcat/buildAndRunDocker.sh
+#./tomcat/buildAndRunDocker.sh
 
-./mysql/buildAndRunDocker.sh
+#./mysql/buildAndRunDocker.sh
 
-./mysql/dockerBash.sh
+#./mysql/dockerBash.sh
