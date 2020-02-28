@@ -1,0 +1,62 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+      - db_backup:/var/lib/mysql/backups
+    ports:
+      - "3306"
+    networks:
+      - backup_access
+      - app_access
+
+  app:
+    image: ubuntu:18.04
+    restart: always
+    volumes:
+      - data_gather:/data
+    networks:
+      - app_access
+
+  jenkins:
+    image: jenkins:lts
+    restart: always
+    volumes:
+      - war_dir:/jars
+    ports:
+      - "8081:80"
+
+  web:
+    image: tomcat:9-jdk8
+    restart: always
+    volumes:
+      - tomcat_home:/usr/local/tomcat
+      - webapps:/usr/local/tomcat/webapps
+    ports:
+      - "8080:80"
+    networks:
+      - app_access
+    environment:
+      CATALINA_HOME: tomcat_home
+
+  backup:
+    image: duplicati/duplicati
+    restart: always
+    volumes:
+      - db_backup
+      - war_dir
+    networks:
+      - backup_access
+    depends_on:
+      - db
+
+volumes:
+    db_data:
+    db_backup:
+    data_gather:
+    war_dir:
+    tomcat_home:
+    webapps:
