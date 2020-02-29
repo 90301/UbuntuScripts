@@ -22,7 +22,7 @@ services:
       - app_access
 
   jenkins:
-    image: jenkins:lts
+    image: jenkins/jenkins:lts
     restart: always
     volumes:
       - war_dir:/jars
@@ -60,3 +60,7 @@ volumes:
     war_dir:
     tomcat_home:
     webapps:
+
+networks:
+    app_access:
+    backup_access:
