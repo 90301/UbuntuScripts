@@ -75,5 +75,11 @@ check_fail $?
 #
 announce "Running docker compose..."
 docker-compose build
+check_fail $?
+
+#
+# Start app stack
+#
+announce "Bringing up app stack..."
 docker stack deploy -c docker-compose.yml app-stack
 check_fail $?
