@@ -3,7 +3,7 @@ version: '3.7'
 services:
   db:
     image: mysql:latest
-    restart: always
+    restart: on-failure
     volumes:
       - db_data:/var/lib/mysql
       - db_backup:/var/lib/mysql/backups
@@ -12,39 +12,48 @@ services:
     networks:
       - backup_access
       - app_access
+    environment:
+      MYSQL_ONETIME_PASSWORD: "mysql"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
   app:
     image: ubuntu:18.04
-    restart: always
+    restart: on-failure
     volumes:
       - data_gather:/data
     networks:
       - app_access
 
   jenkins:
-    image: jenkins/jenkins:lts
-    restart: always
+    image: jenkins_maven:latest
+    build: ./jenkins
+    restart: on-failure
     volumes:
       - war_dir:/jars
     ports:
-      - "8081:80"
+      - "8081:8080"
+    networks:
+      - app_access
+    secrets:
+      - jenkins-user
+      - jenkins-pass
 
   web:
     image: tomcat:9-jdk8
-    restart: always
+    restart: on-failure
     volumes:
       - tomcat_home:/usr/local/tomcat
       - webapps:/usr/local/tomcat/webapps
     ports:
-      - "8080:80"
+      - "8080:8080"
     networks:
       - app_access
     environment:
-      CATALINA_HOME: tomcat_home
+      CATALINA_HOME: "/usr/local/tomcat"
 
   backup:
     image: duplicati/duplicati
-    restart: always
+    restart: on-failure
     volumes:
       - db_backup
       - war_dir
@@ -64,3 +73,9 @@ volumes:
 networks:
     app_access:
     backup_access:
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true

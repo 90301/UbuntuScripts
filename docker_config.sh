@@ -82,6 +82,22 @@ apt update
 apt install docker-ce -y
 check_fail $?
 
+#
+# Initialize docker swarm
+#
+announce "Setting up docker swarm..."
+docker swarm init
+check_fail $?
+
+#
+# Prompt for user name to add to docker group
+#
+announce "Adding user to Docker group..."
+echo "Type username to add to Docker group: "
+read -r username
+usermod -a -G docker "$username"
+echo "Please logout and then back to enable this."
+
 #################################################
 #
 # Docker Compose setup
