@@ -1,0 +1,86 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:latest
+    restart: on-failure
+    volumes:
+      - db_data:/var/lib/mysql
+      - db_backup:/var/lib/mysqld/backups
+    ports:
+      - "3306"
+    networks:
+      - backup_access
+      - app_access
+    environment:
+      MYSQL_ONETIME_PASSWORD: "mysql"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+
+  app:
+    image: ubuntu:18.04
+    restart: on-failure
+    volumes:
+      - data_gather:/data
+    networks:
+      - app_access
+    entrypoint: "tail -f /dev/null"
+    depends_on:
+      - web
+
+  jenkins:
+    image: jenkins_maven:latest
+    build: ./jenkins
+    restart: on-failure
+    volumes:
+      - war_dir:/jars
+    ports:
+      - "8081:8080"
+    networks:
+      - app_access
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+
+  web:
+    image: tomcat:9-jdk8
+    restart: on-failure
+    volumes:
+      - tomcat_home:/usr/local/tomcat
+      - webapps:/usr/local/tomcat/webapps
+    ports:
+      - "8080:8080"
+    networks:
+      - app_access
+    environment:
+      CATALINA_HOME: "/usr/local/tomcat"
+
+  backup:
+    image: duplicati/duplicati
+    restart: on-failure
+    volumes:
+      - db_backup:/var/lib/mysqld/backups
+      - war_dir:/jars
+    ports:
+      - "8200:8200"
+    networks:
+      - backup_access
+    depends_on:
+      - db
+
+volumes:
+    db_data:
+    db_backup:
+    data_gather:
+    war_dir:
+    tomcat_home:
+    webapps:
+
+networks:
+    app_access:
+    backup_access:
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
