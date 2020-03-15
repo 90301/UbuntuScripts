@@ -6,7 +6,7 @@ services:
     restart: on-failure
     volumes:
       - db_data:/var/lib/mysql
-      - db_backup:/var/lib/mysql/backups
+      - db_backup:/var/lib/mysqld/backups
     ports:
       - "3306"
     networks:
@@ -23,6 +23,9 @@ services:
       - data_gather:/data
     networks:
       - app_access
+    entrypoint: "tail -f /dev/null"
+    depends_on:
+      - web
 
   jenkins:
     image: jenkins_maven:latest
@@ -55,8 +58,10 @@ services:
     image: duplicati/duplicati
     restart: on-failure
     volumes:
-      - db_backup
-      - war_dir
+      - db_backup:/var/lib/mysqld/backups
+      - war_dir:/jars
+    ports:
+      - "8200:8200"
     networks:
       - backup_access
     depends_on:
