@@ -31,11 +31,32 @@ First run the `main.sh` script:
 Then run the `docker-config.sh` script:
 `sudo ./docker-config.sh`
 
-This will prompt for a user to add to teh Docker group.
+This will prompt for a user to add to the Docker group.
 
 **NOTE**: This script does not need to be be run with sudo.
 
 Run the `app_setup.sh` script:
-`./app_setup.sh`
+`./app_setup.sh start`
 
-This will prompt for the jenkins username and password.
+There are a few more commands that help with Docker Swarm:
+```
+./app_setup.sh start
+This will set credentials if not set already then builds containers and starts 
+the stack.
+
+./app_setup.sh stop
+This will remove the stack.
+
+./app_setup.sh restart
+This will remove and then start the stack.
+
+./app_setup.sh status
+This will run docker stack ps STACK.
+
+./app_setup.sh services
+This will run docker stack services STACK.
+
+```
+
+This will prompt for the jenkins username and password if they don't already 
+exist.
